@@ -1,12 +1,20 @@
 version: "3"
 services:
-  database:
+  mongo:
     image: mongo
     container_name: gonode_mongo
     volumes:
       - db-data:/var/lib/mongo/data
     ports:
       - 27017:27017
+    restart: always
+  redis:
+    image: redis:alpine
+    container_name: gonode_redis
+    volumes:
+      - db-data:/var/lib/redis/data
+    ports:
+      - 6379:6379
     restart: always
 volumes:
   db-data:
